@@ -54,9 +54,9 @@ export class TemaService {
     }
 
     // Método para deletar um tema pelo ID.
-    async delete(id: number): Promise<{ message: string}> {
+    async delete(id: number): Promise<{ message: string}> {  // DeleteResult - obrigatóriamente preciso usar?
         await this.findById(id); // Verifica se o tema existe antes de tentar deletá-lo.
         await this.temaRepository.delete(id); // Deleta o tema pelo id
-        return { message: `Tema ${id} deletado com sucesso` }; // Remove o tema do banco de dados.
+        return { message: `Tema ${id} deletado com sucesso` }; // mensagem de tema Removido com sucesso do banco de dados.
     }
 }
