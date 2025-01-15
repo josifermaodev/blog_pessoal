@@ -51,10 +51,11 @@ export class TemaController {
 
     // Define o endpoint HTTP DELETE com parâmetro de rota ":id" para deletar um tema específico pelo ID.
     @Delete('/:id')
-    @HttpCode(HttpStatus.NO_CONTENT) // Retorna o status HTTP 204 (No Content) se a requisição for bem-sucedida.
+    @HttpCode(HttpStatus.OK) // Retorna o status HTTP 200 (OK) se a requisição for bem-sucedida.
     delete(@Param('id', ParseIntPipe) id: number) {
         // O "ParseIntPipe" converte o parâmetro ID de string para número.
         return this.temaService.delete(id); // Chama o método "delete" do serviço para remover o tema pelo ID.
     }
 
 }
+
