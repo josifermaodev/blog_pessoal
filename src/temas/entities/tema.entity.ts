@@ -1,6 +1,7 @@
 import { Transform, TransformFnParams } from "class-transformer";
 import { IsNotEmpty } from "class-validator";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Postagem } from "src/postagem/entities/postagem.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 
 // Marca a classe como uma entidade do TypeORM e define o nome da tabela como "tb_temas".
@@ -16,4 +17,7 @@ export class Temas {
     @IsNotEmpty() // Validação para garantir que o campo não está vazio
     @Column({ length: 100, nullable: false }) // Cria a coluna "descricao" como VARCHAR(100) NOT NULL.
     descricao: string;
+
+    @OneToMany(() => Postagem, (postagem) => postagem.tema)
+    postagem: Postagem[];
 }

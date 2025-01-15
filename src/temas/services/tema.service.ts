@@ -14,7 +14,11 @@ export class TemaService {
 
     // Método para buscar todos os registros de temas no banco de dados.
     async findAll(): Promise<Temas[]> {
-        return await this.temaRepository.find(); // Usa o método "find" do TypeORM para retornar todos os temas.
+        return await this.temaRepository.find({
+            relations:{
+                postagem: true
+            }
+        }); // Usa o método "find" do TypeORM para retornar todos os temas.
     }
 
     // Método para buscar um tema pelo ID.
@@ -22,6 +26,9 @@ export class TemaService {
         let tema = await this.temaRepository.findOne({
             where: {
                 id // Especifica a condição de busca: ID igual ao fornecido.
+            },
+            relations:{
+                postagem: true
             }
         });
 
@@ -37,6 +44,9 @@ export class TemaService {
         return await this.temaRepository.find({
             where: {
                 descricao: ILike(`%${descricao}%`) // Usa ILike para buscas insensíveis a maiúsculas/minúsculas.
+            },
+            relations:{
+                postagem: true
             }
         });
     }
