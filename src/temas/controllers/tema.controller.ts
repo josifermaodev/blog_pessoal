@@ -1,15 +1,17 @@
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put, UseGuards } from "@nestjs/common";
 import { TemaService } from "../services/tema.service";
 import { Temas } from "../entities/tema.entity";
+import { JwtAuthGuard } from "src/auth/guard/jwt-auth.guard";
 
 // Declaração de um controlador que gerencia endpoints relacionados à entidade "Tema".
+@UseGuards(JwtAuthGuard)
 @Controller('/temas')
 export class TemaController {
 
     // Construtor da classe, que injeta a dependência do serviço TemaService para manipulação de dados.
     constructor(
         private readonly temaService: TemaService // Define que o TemaService será usado nesta classe.
-    ) {}
+    ){}
 
     // Define o endpoint HTTP GET na raiz ("/"), para buscar todos os temas.
     @Get()
