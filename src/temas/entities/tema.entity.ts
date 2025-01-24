@@ -1,7 +1,8 @@
 import { Transform, TransformFnParams } from "class-transformer";
 import { IsNotEmpty } from "class-validator";
-import { Postagem } from "src/postagem/entities/postagem.entity";
+
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Postagem } from "../../postagem/entities/postagem.entity";
 
 
 // Marca a classe como uma entidade do TypeORM e define o nome da tabela como "tb_temas".
