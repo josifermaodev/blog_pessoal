@@ -12,8 +12,8 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { TemaService } from '../services/tema.service';
-import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 import { Temas } from '../entities/tema.entity';
+import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 
 // Declaração de um controlador que gerencia endpoints relacionados à entidade "Tema".
 @UseGuards(JwtAuthGuard)
